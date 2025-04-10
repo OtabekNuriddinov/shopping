@@ -3,8 +3,12 @@ import 'package:shoppin/models/cart_model.dart';
 
 class CartService {
 
-  final List<CartModel> _cartItems = [];
+  CartService._();
+  static final CartService _singleton = CartService._();
+  factory CartService() => _singleton;
 
+
+  final List<CartModel> _cartItems = [];
   List<CartModel> get cartItems => _cartItems;
 
   void initCartItems() {
@@ -20,7 +24,6 @@ class CartService {
             price: 25.00
         )
     );
-
     _cartItems.add(
         CartModel(
             image: "assets/images/table_lamp.png",
@@ -48,12 +51,12 @@ class CartService {
     );
   }
 
-  String get totalPrice {
+  String get totalPrice{
     double total = 0;
-    for (var item in _cartItems) {
-      total += item.price * item.quantity;
+    for(var item in _cartItems){
+      total += item.quantity * item.price;
     }
-    return '\$${total.toStringAsFixed(2)}';
+    return "\$${total.toStringAsFixed(2)}";
   }
 
   void addItem(CartModel item) {
@@ -66,44 +69,44 @@ class CartService {
     }
   }
 
-  void incrementQuantity(String name) {
-    final index = _cartItems.indexWhere((element) => element.name == name);
-    if (index >= 0) {
+  void incrementQuantity(String name){
+    final index = _cartItems.indexWhere((item)=>item.name == name);
+    if(index>=0){
       final item = _cartItems[index];
       final updatedItem = CartModel(
-        image: item.image,
-        color: item.color,
-        name: item.name,
-        quantity: item.quantity + 1,
-        onDelete: item.onDelete,
-        onIncrement: item.onIncrement,
-        onDecrement: item.onDecrement,
-        price: item.price,
+          image: item.image,
+          color: item.color,
+          name: item.name,
+          quantity: item.quantity + 1,
+          onDelete: item.onDelete,
+          onIncrement: item.onIncrement,
+          onDecrement: item.onDecrement,
+          price: item.price,
       );
       _cartItems[index] = updatedItem;
     }
   }
 
-  void decrementQuantity(String name) {
-    final index = _cartItems.indexWhere((element) => element.name == name);
-    if (index >= 0 && _cartItems[index].quantity > 1) {
+  void decrementQuantity(String name){
+    final index = _cartItems.indexWhere((item)=>item.name == name);
+    if(index>=0 && _cartItems[index].quantity>1){
       final item = _cartItems[index];
       final updatedItem = CartModel(
-        image: item.image,
-        color: item.color,
-        name: item.name,
-        quantity: item.quantity - 1,
-        onDelete: item.onDelete,
-        onIncrement: item.onIncrement,
-        onDecrement: item.onDecrement,
-        price: item.price,
+          image: item.image,
+          color: item.color,
+          name: item.name,
+          quantity: item.quantity - 1,
+          onDelete: item.onDelete,
+          onIncrement: item.onIncrement,
+          onDecrement: item.onDecrement,
+          price: item.price,
       );
       _cartItems[index] = updatedItem;
     }
   }
 
-  void removeItem(String name) {
-    _cartItems.removeWhere((element) => element.name == name);
+  void removeItem(String name){
+    _cartItems.removeWhere((item)=>name==item.name);
   }
 
   void clearCart() {

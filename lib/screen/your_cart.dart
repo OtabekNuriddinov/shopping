@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shoppin/core/theme/strings.dart';
-import 'package:shoppin/core/utils/alert_dialog.dart';
-import 'package:shoppin/screen/empty_cart.dart';
-import 'package:shoppin/servis/app_service.dart';
+import '/core/theme/strings.dart';
+import '/core/utils/alert_dialog.dart';
+import '/screen/empty_cart.dart';
+import '/servis/app_service.dart';
 
 import '../core/components/my_cart_widget.dart';
 import '../core/theme/colors.dart';
@@ -136,7 +136,7 @@ class _YourCartState extends State<YourCart> {
             ),
             // Add checkout button here if needed
             Padding(
-              padding: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 80),
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(

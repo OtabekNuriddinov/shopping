@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class MyCartWidget extends StatelessWidget {
@@ -33,7 +32,7 @@ class MyCartWidget extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.fill,
-                image: AssetImage(image),
+              image: AssetImage(image),
             ),
             color: color,
             borderRadius: BorderRadius.circular(20),
@@ -41,10 +40,11 @@ class MyCartWidget extends StatelessWidget {
         ),
         SizedBox(width: 8),
         Padding(
-          padding: const EdgeInsets.only(left: 10),
+          padding: EdgeInsets.only(left: 10),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 name,
