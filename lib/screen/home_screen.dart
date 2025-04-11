@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoppin/core/theme/colors.dart';
-import 'package:shoppin/core/theme/strings.dart';
-import 'package:shoppin/screen/products_screen.dart';
+import '/core/theme/colors.dart';
+import '/core/theme/strings.dart';
+import '/screen/products_screen.dart';
 
 import '../core/components/my_elevated_button.dart';
 

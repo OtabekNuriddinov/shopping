@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shoppin/core/theme/colors.dart';
-import 'package:shoppin/core/theme/strings.dart';
+import '/core/theme/colors.dart';
+import '/core/theme/strings.dart';
 
 import '../core/components/reviews_widget.dart';
 import '../core/components/stars_widget.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shoppin/core/components/my_elevated_button.dart';
-import 'package:shoppin/core/theme/colors.dart';
-import 'package:shoppin/screen/reviews_screen.dart';
-import 'package:shoppin/screen/your_cart.dart';
+import '/core/components/my_elevated_button.dart';
+import '/core/theme/colors.dart';
+import '/screen/reviews_screen.dart';
+import '/screen/your_cart.dart';
 
 class RateScreen extends StatefulWidget {
   final String name;

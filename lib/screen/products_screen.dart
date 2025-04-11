@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shoppin/core/lists/product_list.dart';
-import 'package:shoppin/core/theme/colors.dart';
-import 'package:shoppin/core/theme/strings.dart';
-import 'package:shoppin/models/product_model.dart';
-import 'package:shoppin/screen/rate_screen.dart';
+import '/core/lists/product_list.dart';
+import '/core/theme/colors.dart';
+import '/core/theme/strings.dart';
+import '/models/product_model.dart';
+import '/screen/rate_screen.dart';
 
 import '../core/components/categories_widget.dart';
 

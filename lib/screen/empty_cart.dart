@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoppin/core/components/my_elevated_button.dart';
-import 'package:shoppin/core/theme/colors.dart';
-import 'package:shoppin/screen/products_screen.dart';
+import '/core/components/my_elevated_button.dart';
+import '/core/theme/colors.dart';
+import '/screen/products_screen.dart';
 
 class EmptyCart extends StatelessWidget {
   const EmptyCart({super.key});

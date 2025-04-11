@@ -5,21 +5,29 @@ class CartModel {
   final Color color;
   final String name;
   final int quantity;
-  final void Function() onDelete;
-  final void Function() onIncrement;
-  final void Function() onDecrement;
-  final double price; // Changed from double to String
+  final double price;
 
   CartModel({
     required this.image,
     required this.color,
     required this.name,
     required this.quantity,
-    required this.onDelete,
-    required this.onIncrement,
-    required this.onDecrement,
     required this.price,
   });
 
-  double get totalPrice => price * quantity;
+  CartModel copyWith({
+    String? image,
+    Color? color,
+    String? name,
+    int? quantity,
+    double? price,
+  }) {
+    return CartModel(
+      image: image ?? this.image,
+      color: color ?? this.color,
+      name: name ?? this.name,
+      quantity: quantity ?? this.quantity,
+      price: price ?? this.price,
+    );
+  }
 }
