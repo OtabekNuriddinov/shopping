@@ -21,13 +21,17 @@ class CartModel {
     String? name,
     int? quantity,
     double? price,
-  }) {
+  }){
     return CartModel(
-      image: image ?? this.image,
-      color: color ?? this.color,
-      name: name ?? this.name,
-      quantity: quantity ?? this.quantity,
-      price: price ?? this.price,
+        image: this.image,
+        color: this.color,
+        name: this.name,
+        quantity: this.quantity,
+        price: this.price,
     );
+  }
+  @override
+  String toString() {
+    return "$image, $color, $name, $quantity, $price";
   }
 }

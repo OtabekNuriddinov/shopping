@@ -189,7 +189,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                               child: Row(
                                 children: [
                                   Text(
-                                    item.price,
+                                    "\$${item.price}",
                                     style: TextStyle(fontSize: width * 0.036),
                                   ),
                                   Spacer(),

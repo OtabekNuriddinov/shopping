@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shoppin/servis/app_service.dart';
+import '../models/cart_model.dart';
 import '/core/components/my_elevated_button.dart';
 import '/core/theme/colors.dart';
 import '/screen/reviews_screen.dart';
@@ -7,7 +9,7 @@ import '/screen/your_cart.dart';
 class RateScreen extends StatefulWidget {
   final String name;
   final String image;
-  final String price;
+  final double price;
   final String category;
   final Color color;
   const RateScreen(
@@ -25,6 +27,14 @@ class RateScreen extends StatefulWidget {
 class _RateScreenState extends State<RateScreen> {
   late double width;
   late double height;
+
+  late CartService cartService;
+
+  @override
+  void initState() {
+    cartService = CartService();
+    super.initState();
+  }
 
   @override
   void didChangeDependencies() {
@@ -85,7 +95,7 @@ class _RateScreenState extends State<RateScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      widget.price,
+                      "\$${widget.price}",
                       style:
                           TextStyle(color: AppColors.deepPurple, fontSize: 16),
                     ),
@@ -145,10 +155,20 @@ class _RateScreenState extends State<RateScreen> {
                 child: MyElevatedButton(
                     text: "Add to Cart",
                     onTapped: () {
+                      cartService.addItem(
+                        CartModel(
+                            image: widget.image,
+                            color: widget.color,
+                            name: widget.name,
+                            quantity: 1,
+                            price: widget.price,
+                        ),
+                      );
+                      print(cartService.cartItems);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => YourCart(),
+                          builder: (context) =>YourCart(),
                         ),
                       );
                     }),

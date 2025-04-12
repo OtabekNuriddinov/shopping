@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoppin/models/cart_model.dart';
 import '/core/theme/strings.dart';
 import '/core/utils/alert_dialog.dart';
 import '/screen/empty_cart.dart';
@@ -21,7 +22,6 @@ class _YourCartState extends State<YourCart> {
   void initState() {
     super.initState();
     cartService = CartService();
-    cartService.initCartItems();
   }
 
   @override

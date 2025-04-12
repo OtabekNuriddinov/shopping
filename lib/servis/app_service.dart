@@ -1,44 +1,15 @@
-import 'package:flutter/material.dart';
-
 import '../models/cart_model.dart';
 
 class CartService {
-  CartService._();
-  static final CartService _singleton = CartService._();
-  factory CartService() => _singleton;
+
+  static final CartService _instance = CartService._internal();
+  factory CartService() => _instance;
+  CartService._internal();
 
   final List<CartModel> _cartItems = [];
+
   List<CartModel> get cartItems => _cartItems;
 
-  void initCartItems() {
-    _cartItems.add(
-        CartModel(
-          image: "assets/images/bag.png",
-          color: Colors.lightBlueAccent,
-          name: "Rains Backpack Pacific",
-          quantity: 1,
-          price: 25.00,
-        )
-    );
-    _cartItems.add(
-        CartModel(
-          image: "assets/images/table_lamp.png",
-          color: Colors.orange.shade100,
-          name: "Camber Table Lamp",
-          quantity: 1,
-          price: 120,
-        )
-    );
-    _cartItems.add(
-        CartModel(
-          image: "assets/images/orange_chair.png",
-          color: Colors.blue.shade100,
-          name: "Orange Chair",
-          quantity: 1,
-          price: 879.0,
-        )
-    );
-  }
 
   String get totalPrice {
     double total = 0;
@@ -49,9 +20,10 @@ class CartService {
   }
 
   void addItem(CartModel item) {
-    final existingIndex = _cartItems.indexWhere((element) => element.name == item.name);
-    if (existingIndex >= 0) {
-      incrementQuantity(item.name);
+    final index = _cartItems.indexWhere((e) => e.name == item.name);
+    if (index != -1) {
+      _cartItems[index] =
+          _cartItems[index].copyWith(quantity: _cartItems[index].quantity + 1);
     } else {
       _cartItems.add(item);
     }
