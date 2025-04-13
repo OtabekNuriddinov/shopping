@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shoppin/models/cart_model.dart';
 import '/core/theme/strings.dart';
 import '/core/utils/alert_dialog.dart';
-import '/screen/empty_cart.dart';
+import '/screen/empty_cart_screen.dart';
 import '/servis/app_service.dart';
 
 import '../core/components/my_cart_widget.dart';

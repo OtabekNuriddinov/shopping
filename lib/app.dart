@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '/screen/home_screen.dart';
-
+import 'package:shoppin/screen/home_screen.dart';
 class Shopin extends StatelessWidget {
   const Shopin({super.key});
 
@@ -8,7 +7,7 @@ class Shopin extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: HomeScreen()
     );
   }
 }

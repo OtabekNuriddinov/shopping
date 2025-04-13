@@ -38,4 +38,23 @@ sealed class AppStrings{
   static const items = "items";
   static const lamp = "Camper Table Lamp";
 
+  /// sign in
+  static const signIn = "Sign In";
+  static const email = "Email";
+  static const password = "password";
+  static const withFacebook = "Sign in with FaceBook";
+  static const dontHaveAcc = "Don't have an account? ";
+  static const forgot = "Forgot password";
+
+  /// signup
+  static const signUp = "Sign Up";
+  static const confirm = "Confirm password";
+  static const already = "Already have an account?  ";
+  static const name = "Name";
+
+  /// congrats
+  static const congrats = "Congratulations";
+  static const successful = "Your account has been\nsuccessfully created.";
+
+  static const wilReceive = "Shopin will receive your public\nprofile and friends list";
 }

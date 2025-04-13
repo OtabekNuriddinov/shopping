@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shoppin/screen/sign_in_screen.dart';
+import 'package:shoppin/screen/sign_up_screen.dart';
 import '/core/theme/colors.dart';
 import '/core/theme/strings.dart';
 import '/screen/products_screen.dart';
@@ -69,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProductsScreen(),
+                        builder: (context) => SignInScreen(),
                       ),
                     );
                   },

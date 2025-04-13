@@ -11,5 +11,4 @@ sealed class Products{
     Product(image: "assets/images/bag.png", price: 25.00, color: Colors.lightBlueAccent, category: "Clothing", name: "Grey Bag"),
   ];
 
-
 }

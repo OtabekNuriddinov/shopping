@@ -7,7 +7,6 @@ class CartService {
   CartService._internal();
 
   final List<CartModel> _cartItems = [];
-
   List<CartModel> get cartItems => _cartItems;
 
 
