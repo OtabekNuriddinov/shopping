@@ -148,8 +148,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     Product item = Products.productsList[index];
                     return Container(
                       color: AppColors.white,
-                      child: SingleChildScrollView(
-                        child: Column(
+                      child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -183,14 +182,13 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                   ),
                                 ),
                             ),
-                            SizedBox(height: 5),
                             Padding(
                               padding: EdgeInsets.only(left: width * 0.02, right: width * 0.02),
                               child: Row(
                                 children: [
                                   Text(
                                     "\$${item.price}",
-                                    style: TextStyle(fontSize: width * 0.036),
+                                    style: TextStyle(fontSize: 14),
                                   ),
                                   Spacer(),
                                   IconButton(
@@ -205,11 +203,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             ),
                           ],
                         ),
-                      ),
+
                     );
                   }),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: (width / 2) / (height * 0.46),
+                    childAspectRatio: (width / 2) / (height * 0.48),
                     crossAxisSpacing: 16,
                     mainAxisSpacing: 16,
                     crossAxisCount: 2,

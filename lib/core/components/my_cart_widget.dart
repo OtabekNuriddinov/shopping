@@ -53,7 +53,7 @@ class MyCartWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -61,17 +61,17 @@ class MyCartWidget extends StatelessWidget {
                       onPressed: decrement,
                       icon: Icon(Icons.delete_outline_sharp),
                     ),
-                    SizedBox(width: 30),
+                    SizedBox(width: 20),
                     Text(
                       quantity.toString(),
                       style: TextStyle(fontSize: 20),
                     ),
-                    SizedBox(width: 30),
+                    SizedBox(width: 20),
                     IconButton(
                       onPressed: increment,
                       icon: Icon(Icons.add_box_outlined),
                     ),
-                    SizedBox(width: 30),
+                    SizedBox(width: 20),
                     Text(
                       "\$${(price * quantity)}",
                       style: TextStyle(fontSize: 20),
