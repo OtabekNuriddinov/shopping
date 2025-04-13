@@ -5,6 +5,7 @@ import 'package:shoppin/core/theme/colors.dart';
 import 'package:shoppin/core/theme/icons.dart';
 import 'package:shoppin/core/theme/strings.dart';
 import 'package:shoppin/core/utils/app_snackbar.dart';
+import 'package:shoppin/screen/password_reset_screen.dart';
 import 'package:shoppin/screen/products_screen.dart';
 import 'package:shoppin/screen/sign_up_screen.dart';
 import 'package:shoppin/servis/app_service.dart';
@@ -158,7 +159,14 @@ class _SignInScreenState extends State<SignInScreen> {
                 color: AppColors.orange,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(10),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PasswordResetScreen(),
+                      ),
+                    );
+                  },
                   child: Text(
                     AppStrings.forgot,
                     style: TextStyle(

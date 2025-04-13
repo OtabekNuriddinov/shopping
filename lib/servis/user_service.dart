@@ -27,4 +27,24 @@ class UserService{
     _usersList.add(newUser);
     return true;
   }
+
+  bool emailChecker(String email){
+    for(User user in _usersList){
+      if(user.email == email){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  void passwordReset(String email, String newPassword){
+    for(User user in _usersList){
+      if(user.email == email){
+        int index = _usersList.indexOf(user);
+        _usersList[index]  = user.copyWith(password: newPassword);
+        break;
+      }
+    }
+
+  }
 }

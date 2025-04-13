@@ -57,4 +57,30 @@ sealed class AppStrings{
   static const successful = "Your account has been\nsuccessfully created.";
 
   static const wilReceive = "Shopin will receive your public\nprofile and friends list";
+
+  /// reset
+  static const passRes = "Password Reset";
+  static const enter = "Enter your email address. We'll send\na link to reset your password";
+  static const send = "Send";
+
+  /// instructions
+  static const instructions = "Instructions sent!";
+  static const check = "Check your inbox and follow the\ninstructions to reset your password.";
+  static const goTo = "Go To Email";
+
+  /// to email
+  static const recover = "Recover account";
+  static const inbox = "Inbox";
+  static const reset = "Reset your Shopin\npassword";
+  static const hi = "Hi,";
+  static const weHave = "We've received a request to rest your\npassword";
+  static const click = "Click the button below to setup a new password";
+  static const thisLink = "This link will expire in 1 hour.\nIf you didn't initiate this change, please";
+  static const emailUs = "email us";
+  static const lets = "and let us know";
+
+  /// NewPassword
+  static const newPass = "New Password";
+  static const save = "Save";
+  static const confirmPassword = "Confirm Password";
 }
