@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoppin/models/cart_model.dart';
+import 'package:shoppin/screen/shipping_address.dart';
+import '../core/components/check_out_button.dart';
 import '/core/theme/strings.dart';
 import '/core/utils/alert_dialog.dart';
 import '/screen/empty_cart_screen.dart';
@@ -137,34 +139,15 @@ class _YourCartState extends State<YourCart> {
             // Add checkout button here if needed
             Padding(
               padding: const EdgeInsets.only(bottom: 80),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.darkBlue,
-                  minimumSize: Size(double.infinity, 80),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+              child: CheckOutButton(
+                  cartService: cartService,
+                  text: "Check Out",
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context)=>ShippingAddress(),
                   ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Check Out",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      cartService.totalPrice,
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.white),
-                    )
-                  ],
-                ),
+                  );
+                },
               ),
             ),
           ],
@@ -173,3 +156,4 @@ class _YourCartState extends State<YourCart> {
     );
   }
 }
+

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoppin/screen/home_screen.dart';
+import '/screen/home_screen.dart';
 class Shopin extends StatelessWidget {
   const Shopin({super.key});
 

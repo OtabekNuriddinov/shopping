@@ -83,4 +83,11 @@ sealed class AppStrings{
   static const newPass = "New Password";
   static const save = "Save";
   static const confirmPassword = "Confirm Password";
+
+  /// Shipping
+  static const willBe = "This will be your default shipping address.\nThis will be your default billing address.";
+  static const barcha = "Barcha maydonlarni to'ldiring!";
+
+  static const yourOrder = "Your order has been successfully\nplaced";
+  static const continueShop = "Continue Shopping";
 }
