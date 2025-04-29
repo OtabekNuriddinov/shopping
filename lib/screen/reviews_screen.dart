@@ -26,9 +26,9 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
-        backgroundColor: AppColors.white,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         leading: BackButton(
           onPressed: () {
             Navigator.pop(context);
@@ -49,7 +49,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
               ReviewsWidget(
                   image: "assets/images/jessie.jpg",
                   name: AppStrings.jessieName,
-                  lastStar: Colors.orange.shade300,
+                  lastStar: Theme.of(context).colorScheme.onPrimary,
                   leftOn: "Review left on Jan 06, 2020",
                   perspective: AppStrings.jessie,
                   review: AppStrings.jessieRew,
@@ -58,7 +58,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
               ReviewsWidget(
                   image: "assets/images/larry.jpg",
                   name: AppStrings.larryName,
-                  lastStar: Colors.orange.shade300,
+                  lastStar: Theme.of(context).colorScheme.onPrimary,
                   leftOn: "Review left on Dec 14, 2019",
                   perspective: AppStrings.larry,
                   review: AppStrings.jessieRew ,
@@ -67,7 +67,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
               ReviewsWidget(
                 image: "assets/images/bradley.jpg",
                 name: AppStrings.bradleyName,
-                lastStar: Colors.grey.shade300,
+                lastStar: Theme.of(context).colorScheme.onPrimary,
                 leftOn: "Review left on Dec 11, 2019",
                 perspective: AppStrings.bradley,
                 review: AppStrings.bradleyRew ,
@@ -76,7 +76,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
               ReviewsWidget(
                 image: "assets/images/jackson.jpg",
                 name: AppStrings.jacksonName,
-                lastStar: Colors.orange.shade300,
+                lastStar: Theme.of(context).colorScheme.onPrimary,
                 leftOn: "Review left on Dec 12, 2019",
                 perspective: AppStrings.jackson,
                 review: AppStrings.jacksonRew ,

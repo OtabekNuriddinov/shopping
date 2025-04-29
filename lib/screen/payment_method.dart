@@ -7,6 +7,7 @@ import 'package:shoppin/screen/checkout.dart';
 
 import '../core/components/card_widget.dart';
 import '../core/components/my_elevated_button.dart';
+import '../core/theme/themes.dart';
 
 class PaymentMethod extends StatefulWidget {
   final String country;
@@ -163,7 +164,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: circle?AppColors.darkBlue:Colors.grey
+                          color: circle?Theme.of(context).colorScheme.primary:Themes.grey
                         ),
                       ),
                     ),

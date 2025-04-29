@@ -9,7 +9,7 @@ sealed class AppSnackbar {
         SnackBar(
           content: Text(
             message,
-            style: TextStyle(color: AppColors.white),
+            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
           ),
           backgroundColor: color,
         ),

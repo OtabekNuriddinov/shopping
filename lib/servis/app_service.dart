@@ -9,7 +9,6 @@ class CartService {
   final List<CartModel> _cartItems = [];
   List<CartModel> get cartItems => _cartItems;
 
-
   String get totalPrice {
     double total = 0;
     for (var item in _cartItems) {

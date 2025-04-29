@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoppin/screen/sign_in_screen.dart';
-import 'package:shoppin/screen/sign_up_screen.dart';
-import '/core/theme/colors.dart';
 import '/core/theme/strings.dart';
-import '/screen/products_screen.dart';
-
 import '../core/components/my_elevated_button.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.orange,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -38,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Text(
                 AppStrings.shopin,
                 style: TextStyle(
-                    color: AppColors.deepPurple,
+                    color: Theme.of(context).colorScheme.primary,
                     fontSize: width * 0.16,
                     letterSpacing: 10,
                     fontWeight: FontWeight.bold),
@@ -47,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Text(
                 AppStrings.amazing,
                 style: TextStyle(
-                    color: AppColors.deepPurple,
+                    color: Theme.of(context).colorScheme.primary,
                     fontSize: width * 0.072,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 3),
@@ -58,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
-                  color: AppColors.deepPurple,
+                  color: Theme.of(context).colorScheme.primary
                 ),
               ),
               SizedBox(height: height * 0.22),

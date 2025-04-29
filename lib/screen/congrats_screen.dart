@@ -25,7 +25,7 @@ class _CongratsState extends State<Congrats> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.orange,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -34,7 +34,7 @@ class _CongratsState extends State<Congrats> {
             Text(
               AppStrings.congrats,
               style: TextStyle(
-                color: AppColors.darkBlue,
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: screenWidth * 0.1,
               ),
             ),
@@ -42,7 +42,7 @@ class _CongratsState extends State<Congrats> {
               textAlign: TextAlign.center,
               AppStrings.successful,
               style: TextStyle(
-                color: AppColors.darkBlue,
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: screenWidth * 0.04,
               ),
             ),

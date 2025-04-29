@@ -23,7 +23,7 @@ class CardWidget extends StatelessWidget {
           onTap: onPressed,
           child: Card(
             elevation: 10,
-            color: index==currentIndex?AppColors.darkBlue:Colors.white,
+            color: index==currentIndex?Theme.of(context).colorScheme.primary:Theme.of(context).colorScheme.onPrimary,
             child: SizedBox(
               height: 60,
               width: 100,

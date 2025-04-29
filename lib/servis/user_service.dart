@@ -9,6 +9,7 @@ class UserService{
   final List<User> _usersList = [
     User(id: 1, name: "Otabek", email: "otabeknuriddinov7808@gmail.com", password: "Otabek7808")
   ];
+
   List<User> get usersList => _usersList;
 
   User? finding(String email, String password){
@@ -47,6 +48,5 @@ class UserService{
         break;
       }
     }
-
   }
 }

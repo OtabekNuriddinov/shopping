@@ -25,7 +25,7 @@ class _FinallyPageState extends State<FinallyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.orange,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -34,7 +34,7 @@ class _FinallyPageState extends State<FinallyPage> {
             Text(
               AppStrings.congrats,
               style: TextStyle(
-                color: AppColors.darkBlue,
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: screenWidth * 0.1,
               ),
             ),
@@ -42,7 +42,7 @@ class _FinallyPageState extends State<FinallyPage> {
               textAlign: TextAlign.center,
               AppStrings.yourOrder,
               style: TextStyle(
-                color: AppColors.darkBlue,
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: screenWidth * 0.04,
               ),
             ),

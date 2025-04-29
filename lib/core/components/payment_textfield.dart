@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoppin/core/theme/themes.dart';
 
 import '../theme/colors.dart';
 
@@ -19,13 +20,13 @@ class PaymentTextFields extends StatelessWidget {
         contentPadding: EdgeInsets.only(bottom: 20),
         label: Text(
           text,
-          style: TextStyle(color: Colors.grey),
+          style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
         ),
         enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.onSecondary),
         ),
         focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.darkBlue, width: 2),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 2),
         ),
       ),
     );

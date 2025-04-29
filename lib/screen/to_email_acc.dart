@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/theme/strings.dart';
 import 'package:shoppin/screen/new_password_screen.dart';
+import '../core/theme/themes.dart';
 import '/core/theme/colors.dart';
 
 class ToEmailAcc extends StatefulWidget {
@@ -16,9 +17,9 @@ class _ToEmailAccState extends State<ToEmailAcc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
-        backgroundColor: AppColors.white,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         leading: BackButton(),
         actions: [
           IconButton(
@@ -52,7 +53,7 @@ class _ToEmailAccState extends State<ToEmailAcc> {
                   SizedBox(width: 8),
                   Icon(
                     Icons.inbox_outlined,
-                    color: Colors.orange.shade300,
+                    color: Theme.of(context).colorScheme.secondary
                   ),
                   SizedBox(width: 8),
                   Container(
@@ -60,17 +61,17 @@ class _ToEmailAccState extends State<ToEmailAcc> {
                     height: 24,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: Colors.grey.shade300),
+                        color: Themes.grey),
                     child: Center(
                       child: Text(
                         AppStrings.inbox,
-                        style: TextStyle(color: Colors.black, fontSize: 12),
+                        style: TextStyle(color: Theme.of(context).colorScheme.onSecondary, fontSize: 12),
                       ),
                     ),
                   ),
                   Spacer(),
                   Material(
-                    color: AppColors.white,
+                    color: Theme.of(context).colorScheme.onPrimary,
                     child: InkWell(
                       onTap: () {},
                       child: Icon(Icons.star_border),
@@ -86,10 +87,10 @@ class _ToEmailAccState extends State<ToEmailAcc> {
                 children: [
                   CircleAvatar(
                     radius: 24,
-                    backgroundColor: Colors.orange.shade900,
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
                     child: Text(
                       "S",
-                      style: TextStyle(color: AppColors.white),
+                      style: TextStyle(color: Theme.of(context).colorScheme.onPrimary,),
                     ),
                   ),
                   SizedBox(width: 14),

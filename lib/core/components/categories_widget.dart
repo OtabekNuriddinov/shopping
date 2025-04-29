@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoppin/core/theme/themes.dart';
 
 class CategoriesWidget extends StatelessWidget {
   final String text;
@@ -31,7 +32,7 @@ class CategoriesWidget extends StatelessWidget {
           ),
         ),
         Container(
-          color: selectedIndex == index?Colors.orange:Colors.grey,
+          color: selectedIndex == index?Theme.of(context).colorScheme.secondary:Themes.grey,
           width: width,
           height: 2,
         )

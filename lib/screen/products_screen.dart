@@ -30,7 +30,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.white,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         body: CustomScrollView(
           slivers: [
             SliverPadding(
@@ -44,13 +44,13 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     Text(
                       AppStrings.list,
                       style: TextStyle(
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.onSecondary,
                           fontSize: width * 0.06,
                           fontWeight: FontWeight.bold),
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.search, color: Colors.black),
+                      icon: Icon(Icons.search, color: Theme.of(context).colorScheme.onSecondary),
                     ),
                   ],
                 ),
@@ -147,7 +147,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       (context, index) {
                     Product item = Products.productsList[index];
                     return Container(
-                      color: AppColors.white,
+                      color: Theme.of(context).colorScheme.onPrimary,
                       child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,7 +195,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                       onPressed: () {},
                                       icon: Icon(
                                         Icons.more_horiz,
-                                        color: Colors.black,
+                                        color: Theme.of(context).colorScheme.onSecondary,
                                       ),
                                   )
                                 ],

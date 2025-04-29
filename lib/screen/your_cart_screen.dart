@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shoppin/models/cart_model.dart';
 import 'package:shoppin/screen/shipping_address.dart';
 import '../core/components/check_out_button.dart';
 import '/core/theme/strings.dart';
@@ -29,9 +28,9 @@ class _YourCartState extends State<YourCart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
-        backgroundColor: AppColors.white,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         leading: BackButton(
           onPressed: () {
             Navigator.pop(context);
@@ -77,7 +76,7 @@ class _YourCartState extends State<YourCart> {
                   },
                   icon: Icon(
                     Icons.delete_outline_sharp,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSecondary
                   ),
                 ),
               ],

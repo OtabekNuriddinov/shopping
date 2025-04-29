@@ -15,7 +15,7 @@ class MyElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.darkBlue,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
@@ -23,7 +23,10 @@ class MyElevatedButton extends StatelessWidget {
       onPressed: onTapped,
       child: Text(
         text,
-        style: TextStyle(fontSize: 20, color: AppColors.white),
+        style: TextStyle(
+          fontSize: 20,
+          color: Theme.of(context).colorScheme.onPrimary,
+        ),
       ),
     );
   }

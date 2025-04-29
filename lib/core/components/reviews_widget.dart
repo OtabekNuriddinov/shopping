@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoppin/core/components/stars_widget.dart';
+import '/core/components/stars_widget.dart';
 
 class ReviewsWidget extends StatelessWidget {
   final String image;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoppin/servis/app_service.dart';
+import '../core/theme/themes.dart';
 import '../models/cart_model.dart';
 import '/core/components/my_elevated_button.dart';
 import '/core/theme/colors.dart';
@@ -48,9 +49,9 @@ class _RateScreenState extends State<RateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
-        backgroundColor: AppColors.white,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         leading: BackButton(
           onPressed: () {
             Navigator.pop(context);
@@ -66,7 +67,7 @@ class _RateScreenState extends State<RateScreen> {
               child: Text(
                 widget.name,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.onSecondary,
                   fontSize: 40,
                 ),
               ),
@@ -90,14 +91,14 @@ class _RateScreenState extends State<RateScreen> {
                   width: width * 0.2,
                   height: height * 0.071,
                   decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: Theme.of(context).colorScheme.onPrimary,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Text(
                       "\$${widget.price}",
                       style:
-                          TextStyle(color: AppColors.deepPurple, fontSize: 16),
+                          TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 16),
                     ),
                   ),
                 ),
@@ -108,7 +109,7 @@ class _RateScreenState extends State<RateScreen> {
               alignment: Alignment(0, 0),
               child: Text(
                 widget.category,
-                style: TextStyle(color: Colors.grey, fontSize: 18),
+                style: TextStyle(color: Themes.grey, fontSize: 18),
               ),
             ),
             SizedBox(height: 10),
@@ -117,15 +118,15 @@ class _RateScreenState extends State<RateScreen> {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.star, color: Colors.orange.shade300),
+                  Icon(Icons.star, color: Theme.of(context).colorScheme.secondary),
                   SizedBox(width: 5),
-                  Icon(Icons.star, color: Colors.orange.shade300),
+                  Icon(Icons.star, color: Theme.of(context).colorScheme.secondary),
                   SizedBox(width: 5),
-                  Icon(Icons.star, color: Colors.orange.shade300),
+                  Icon(Icons.star, color: Theme.of(context).colorScheme.secondary),
                   SizedBox(width: 5),
-                  Icon(Icons.star, color: Colors.orange.shade300),
+                  Icon(Icons.star, color: Theme.of(context).colorScheme.secondary),
                   SizedBox(width: 5),
-                  Icon(Icons.star, color: Colors.grey.shade300),
+                  Icon(Icons.star, color: Theme.of(context).colorScheme.secondary),
                   SizedBox(width: 5),
                   TextButton(
                     onPressed: () {
@@ -138,9 +139,9 @@ class _RateScreenState extends State<RateScreen> {
                       "124 reviews",
                       style: TextStyle(
                           fontSize: 16,
-                          color: Colors.lightBlue,
+                          color: Themes.lightBlue,
                           decoration: TextDecoration.underline,
-                          decorationColor: Colors.lightBlue),
+                          decorationColor: Themes.lightBlue),
                     ),
                   )
                 ],
@@ -184,14 +185,14 @@ class _RateScreenState extends State<RateScreen> {
             currentIndex = index;
           });
         },
-        backgroundColor: AppColors.white,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         items: [
           BottomNavigationBarItem(
               icon: currentIndex == 0
-                  ? Icon(Icons.home, color: Colors.grey)
+                  ? Icon(Icons.home, color: Themes.grey)
                   : Icon(
                       Icons.home_outlined,
-                      color: Colors.grey,
+                      color: Themes.grey,
                     ),
               label: " "),
           BottomNavigationBarItem(

@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/components/my_rich_text.dart';
 import 'package:shoppin/core/theme/colors.dart';
-import 'package:shoppin/core/theme/icons.dart';
 import 'package:shoppin/core/theme/strings.dart';
 import 'package:shoppin/core/utils/app_snackbar.dart';
 import 'package:shoppin/screen/password_reset_screen.dart';
 import 'package:shoppin/screen/products_screen.dart';
 import 'package:shoppin/screen/sign_up_screen.dart';
-import 'package:shoppin/servis/app_service.dart';
 import 'package:shoppin/servis/user_service.dart';
 
 import '../core/components/bottom_sheet_container.dart';
@@ -48,7 +46,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.orange,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         body: Stack(
           children: [
             Padding(
@@ -64,7 +62,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     AppStrings.signIn,
                     style: TextStyle(
                       fontSize: screenWidth * 0.068,
-                      color: AppColors.darkBlue,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                   SizedBox(height: screenHeight * 0.028),
@@ -86,7 +84,6 @@ class _SignInScreenState extends State<SignInScreen> {
                       onTapped: () {
                         String email = emailController.text.trim();
                         String password = passwordController.text.trim();
-
                         if (email.isEmpty || password.isEmpty) {
                           AppSnackbar.msg(
                               context, "Email va parolni to'ldiring!");
@@ -116,7 +113,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     width: double.maxFinite,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.orange,
+                        backgroundColor: Theme.of(context).colorScheme.secondary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -130,7 +127,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: TextStyle(
                             fontSize: screenWidth * 0.04,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.darkBlue),
+                            color: Theme.of(context).colorScheme.primary),
                       ),
                     ),
                   ),
@@ -156,7 +153,7 @@ class _SignInScreenState extends State<SignInScreen> {
               right: screenWidth * 0.08,
               child: Material(
                 borderRadius: BorderRadius.circular(10),
-                color: AppColors.orange,
+                color: Theme.of(context).colorScheme.secondary,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(10),
                   onTap: () {
@@ -172,7 +169,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: screenWidth * 0.036,
-                        color: AppColors.darkBlue),
+                        color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoppin/core/components/check_out_button.dart';
 import 'package:shoppin/core/theme/colors.dart';
+import 'package:shoppin/core/theme/themes.dart';
 import 'package:shoppin/screen/finallly_page.dart';
 import 'package:shoppin/servis/app_service.dart';
 
@@ -136,11 +137,11 @@ class _CheckoutState extends State<Checkout> {
           SliverToBoxAdapter(child: SizedBox(height: 10)),
           SliverToBoxAdapter(
               child:
-                  Text(widget.cardNum, style: TextStyle(color: Colors.grey))),
+                  Text(widget.cardNum, style: TextStyle(color: Themes.grey))),
           SliverToBoxAdapter(
-              child: Text(widget.name, style: TextStyle(color: Colors.grey))),
+              child: Text(widget.name, style: TextStyle(color: Themes.grey))),
           SliverToBoxAdapter(
-              child: Text(widget.date, style: TextStyle(color: Colors.grey))),
+              child: Text(widget.date, style: TextStyle(color: Themes.grey))),
           SliverToBoxAdapter(child: SizedBox(height: 20)),
           SliverToBoxAdapter(child: Divider()),
           SliverToBoxAdapter(child: SizedBox(height: 20)),

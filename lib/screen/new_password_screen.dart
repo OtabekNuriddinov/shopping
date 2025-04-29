@@ -31,7 +31,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.orange,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
@@ -42,7 +42,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                 AppStrings.newPass,
                 style: TextStyle(
                   fontSize: 40,
-                  color: AppColors.darkBlue,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               SizedBox(height: 20),

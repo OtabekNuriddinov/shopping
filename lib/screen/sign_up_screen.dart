@@ -48,7 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.orange,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Padding(
         padding: EdgeInsets.only(
           top: screenHeight * 0.1,
@@ -62,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               AppStrings.signUp,
               style: TextStyle(
                 fontSize: screenWidth * 0.068,
-                color: AppColors.darkBlue,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
             SizedBox(height: screenHeight * 0.028),

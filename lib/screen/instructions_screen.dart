@@ -28,9 +28,9 @@ class _InstructionsScreenState extends State<InstructionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.orange,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       appBar: AppBar(
-        backgroundColor: AppColors.orange,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         leading: BackButton(
           onPressed: () {
             Navigator.pop(context);
@@ -60,7 +60,7 @@ class _InstructionsScreenState extends State<InstructionsScreen> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
-                    color: AppColors.darkBlue),
+                    color: Theme.of(context).colorScheme.primary),
               ),
               SizedBox(height: 10),
               Text(
@@ -68,7 +68,7 @@ class _InstructionsScreenState extends State<InstructionsScreen> {
                 AppStrings.check,
                 style: TextStyle(
                     fontSize: 18,
-                    color: AppColors.darkBlue,
+                    color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 40),

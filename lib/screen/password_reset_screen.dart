@@ -37,9 +37,9 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.orange,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       appBar: AppBar(
-        backgroundColor: AppColors.orange,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         leading: BackButton(
           onPressed: () {
             Navigator.pop(context);
@@ -55,15 +55,19 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
               Text(
                 AppStrings.passRes,
                 style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.darkBlue),
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
               SizedBox(height: 5),
               Text(
                 textAlign: TextAlign.center,
                 AppStrings.enter,
-                style: TextStyle(fontSize: 18, color: AppColors.darkBlue),
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
               SizedBox(height: 30),
               Padding(
@@ -93,11 +97,11 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => InstructionsScreen(email: email),
+                            builder: (context) =>
+                                InstructionsScreen(email: email),
                           ),
                         );
-                      }
-                      else{
+                      } else {
                         AppSnackbar.msg(context, 'Bunday Email mavjud emas!');
                         return;
                       }

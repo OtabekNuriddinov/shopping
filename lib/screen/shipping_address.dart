@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/theme/colors.dart';
 import 'package:shoppin/core/theme/strings.dart';
+import 'package:shoppin/core/theme/themes.dart';
 import 'package:shoppin/core/utils/app_snackbar.dart';
 import 'package:shoppin/screen/payment_method.dart';
 
@@ -65,13 +66,13 @@ class _ShippingAddressState extends State<ShippingAddress> {
                   ),
                   label: Text(
                     "Country",
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Theme.of(context).colorScheme.onSecondary,),
                   ),
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onSecondary,),
                   ),
                   focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.darkBlue, width: 2),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.primary, width: 2),
                   ),
                 ),
               ),
@@ -87,7 +88,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
               Text(
                 AppStrings.willBe,
                 style: TextStyle(
-                  color: Colors.grey,
+                  color: Theme.of(context).colorScheme.onSecondary,
                   fontSize: 14,
                 ),
               ),
