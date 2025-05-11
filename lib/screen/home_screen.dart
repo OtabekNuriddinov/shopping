@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/screen/sign_in_screen.dart';
 import '/core/theme/strings.dart';
 import '../core/components/my_elevated_button.dart';
@@ -12,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late double width;
+
   late double height;
   @override
   void didChangeDependencies() {
@@ -19,7 +21,6 @@ class _HomeScreenState extends State<HomeScreen> {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,12 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: MyElevatedButton(
                   text: AppStrings.explore,
                   onTapped: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignInScreen(),
-                      ),
-                    );
+                    context.go('/sign-in');
                   },
                 ),
               )

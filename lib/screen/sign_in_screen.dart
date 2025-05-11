@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/components/my_rich_text.dart';
 import 'package:shoppin/core/theme/colors.dart';
@@ -94,12 +95,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           password,
                         );
                         if (exUser != null) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ProductsScreen(),
-                            ),
-                          );
+                          context.go('/products');
                         } else {
                           AppSnackbar.msg(context,
                               "Foydalanuvchi topilmadi! Sign Up ni bosing!");
@@ -136,18 +132,14 @@ class _SignInScreenState extends State<SignInScreen> {
                     request: AppStrings.dontHaveAcc,
                     mainText: AppStrings.signUp,
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUpScreen(),
-                        ),
-                      );
+                      context.go('/sign-up');
                     },
                   ),
                   SizedBox(height: screenHeight * 0.18),
                 ],
               ),
             ),
+
             Positioned(
               bottom: screenHeight * 0.04,
               right: screenWidth * 0.08,
@@ -157,12 +149,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(10),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PasswordResetScreen(),
-                      ),
-                    );
+                    context.go('/reset-password');
                   },
                   child: Text(
                     AppStrings.forgot,

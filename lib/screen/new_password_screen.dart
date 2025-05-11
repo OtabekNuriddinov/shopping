@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/components/my_text_field.dart';
 import 'package:shoppin/core/theme/colors.dart';
@@ -8,8 +9,8 @@ import 'package:shoppin/screen/successful.dart';
 import 'package:shoppin/servis/user_service.dart';
 
 class NewPasswordScreen extends StatefulWidget {
-  final String email;
-  const NewPasswordScreen({required this.email, super.key});
+  final String? email;
+  const NewPasswordScreen({this.email, super.key});
 
   @override
   State<NewPasswordScreen> createState() => _NewPasswordScreenState();
@@ -30,6 +31,13 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final extra = GoRouter.of(context).state.extra;
+    if (extra is! Map<String, dynamic>) {
+      return Scaffold(
+        body: Center(child: Text("Invalid data")),
+      );
+    }
+    final email = extra['email'];
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Center(
@@ -74,13 +82,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                           context, "Parolni tasdiqlashda Xatolik bor!");
                       return;
                     }
-                    userService.passwordReset(widget.email, newPass);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Successful(),
-                      ),
-                    );
+                    userService.passwordReset(email ?? "", newPass);
+                    context.goNamed('successful');
                   },
                 ),
               )

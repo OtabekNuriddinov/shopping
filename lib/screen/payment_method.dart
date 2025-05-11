@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/components/payment_textfield.dart';
 import 'package:shoppin/core/theme/colors.dart';
 import 'package:shoppin/core/theme/strings.dart';
@@ -10,15 +11,15 @@ import '../core/components/my_elevated_button.dart';
 import '../core/theme/themes.dart';
 
 class PaymentMethod extends StatefulWidget {
-  final String country;
-  final String city;
-  final String postcode;
-  final String street;
+  final String? country;
+  final String? city;
+  final String? postcode;
+  final String? street;
   const PaymentMethod({
-    required this.country,
-    required this.city,
-    required this.postcode,
-    required this.street,
+    this.country,
+    this.city,
+    this.postcode,
+    this.street,
     super.key});
 
   @override
@@ -52,11 +53,28 @@ class _PaymentMethodState extends State<PaymentMethod> {
 
   @override
   Widget build(BuildContext context) {
+    final extra = GoRouter.of(context).state.extra;
+    if (extra is! Map<String, dynamic>) {
+      return Scaffold(
+        body: Center(child: Text("Invalid data")),
+      );
+    }
+    final country = extra['country'];
+    final city = extra['city'];
+    final postcode = extra['postcode'];
+    final street = extra['street'];
+    final image = extra['image'];
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
           onPressed: (){
-            Navigator.pop(context);
+            context.goNamed('shipping', extra: {
+              'country': country,
+              'city': city,
+              'postcode': postcode,
+              'street': street,
+              'image': image
+            });
           },
         ),
       ),
@@ -182,10 +200,6 @@ class _PaymentMethodState extends State<PaymentMethod> {
                 child: MyElevatedButton(
                   text: "Next",
                   onTapped: (){
-                    final country = widget.country;
-                    final city = widget.city;
-                    final postcode = widget.postcode;
-                    final street = widget.street;
                     final name = nameController.text;
                     final card = cardController.text;
                     final date = dateController.text;
@@ -193,20 +207,18 @@ class _PaymentMethodState extends State<PaymentMethod> {
                     if(name.isEmpty || card.isEmpty || date.isEmpty || cvc.isEmpty){
                       AppSnackbar.msg(context, AppStrings.barcha);
                     }
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context)=> Checkout(
-                            country: country,
-                            city: city,
-                            postcode: postcode,
-                            street: street,
-                            name: name,
-                            cardNum: card,
-                            date: date,
-                            cvc: cvc,
-                          image: images[currentIndex],
-                        )
-                    ),
-                    );
+
+                    context.goNamed('checkOut', extra: {
+                      'country': country,
+                      'city': city,
+                      'postcode': postcode,
+                      'street': street,
+                      'image': images[currentIndex],
+                      'name': name,
+                      'cardNum': card,
+                      'date': date,
+                      'cvc': cvc
+                    });
                   },
                 ),
               )

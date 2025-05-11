@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/theme/strings.dart';
 import 'package:shoppin/screen/sign_in_screen.dart';
@@ -38,12 +39,7 @@ class _SuccessfulState extends State<Successful> {
             MyElevatedButton(
                 text: AppStrings.signIn,
                 onTapped: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SignInScreen(),
-                    ),
-                  );
+                  context.go('/sign-in');
                 })
           ],
         ),

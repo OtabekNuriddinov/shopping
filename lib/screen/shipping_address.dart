@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/theme/colors.dart';
 import 'package:shoppin/core/theme/strings.dart';
@@ -32,11 +33,28 @@ class _ShippingAddressState extends State<ShippingAddress> {
 
   @override
   Widget build(BuildContext context) {
+    final extra = GoRouter.of(context).state.extra;
+    if (extra is! Map<String, dynamic>) {
+      return Scaffold(
+        body: Center(child: Text("Invalid data")),
+      );
+    }
+    final name = extra['name'];
+    final image = extra['image'];
+    final price = extra['price'];
+    final category = extra['category'];
+    final color = extra['color'];
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.goNamed('yourCart', extra: {
+              'name': name,
+              'image': image,
+              'price': price,
+              'category': category,
+              'color': color,
+            });
           },
         ),
       ),
@@ -107,17 +125,14 @@ class _ShippingAddressState extends State<ShippingAddress> {
                       AppSnackbar.msg(context, AppStrings.barcha);
                       return;
                     }
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PaymentMethod(
-                          country: country,
-                          city: city,
-                          postcode: postcode,
-                          street: street,
-                        ),
-                      ),
-                    );
+                    context.goNamed('payment', extra: {
+                      'country': country,
+                      'city': city,
+                      'postcode': postcode,
+                      'street': street,
+                      'image': image,
+
+                    });
                   },
                 ),
               )

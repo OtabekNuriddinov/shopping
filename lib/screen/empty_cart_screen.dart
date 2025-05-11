@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../core/theme/themes.dart';
 import '/core/components/my_elevated_button.dart';
 import '/core/theme/colors.dart';
@@ -38,12 +39,7 @@ class EmptyCart extends StatelessWidget {
                 child: MyElevatedButton(
                   text: "Explore New Products",
                   onTapped: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProductsScreen(),
-                      ),
-                    );
+                    context.go('/products');
                   },
                 ),
               )

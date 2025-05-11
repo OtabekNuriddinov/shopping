@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '/core/theme/colors.dart';
 import '/core/theme/strings.dart';
 
@@ -31,7 +32,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
         backgroundColor: Theme.of(context).colorScheme.onPrimary,
         leading: BackButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
       ),

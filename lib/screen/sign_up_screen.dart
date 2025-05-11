@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/components/my_text_field.dart';
 import 'package:shoppin/core/theme/strings.dart';
@@ -25,7 +26,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late TextEditingController confirmationController;
   late double screenWidth;
   late double screenHeight;
-
   late UserService userService;
 
   @override
@@ -118,12 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   );
                   bool check = userService.addUser(newUser);
                   if (check) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Congrats(),
-                      ),
-                    );
+                    context.go('/congrats');
                   }
                   else{
                     AppSnackbar.msg(context, "Bu email bilan user mavjud!");

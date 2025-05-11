@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '/core/lists/product_list.dart';
 import '/core/theme/colors.dart';
 import '/core/theme/strings.dart';
@@ -152,19 +153,18 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => RateScreen(
-                                      name: item.name,
-                                      image: item.image,
-                                      price: item.price,
-                                      category: item.category,
-                                      color: item.color,
-                                    ),
-                                  ),
+                                context.goNamed(
+                                    'rate',
+                                    extra: {
+                                      'name': item.name,
+                                      'image': item.image,
+                                      'price': item.price,
+                                      'category': item.category,
+                                      'color': item.color
+                                     },
                                 );
                               },
                               child: Container(

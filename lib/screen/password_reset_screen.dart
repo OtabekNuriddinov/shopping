@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/components/my_text_field.dart';
 import 'package:shoppin/core/theme/colors.dart';
@@ -19,6 +20,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
   late double screenHeight;
   late TextEditingController emailController;
   late UserService userService;
+
 
   @override
   void initState() {
@@ -42,7 +44,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
         backgroundColor: Theme.of(context).colorScheme.secondary,
         leading: BackButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
       ),
@@ -94,13 +96,9 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                       }
                       bool checker = userService.emailChecker(email);
                       if (checker) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                InstructionsScreen(email: email),
-                          ),
-                        );
+                        context.goNamed('instructions', extra: {
+                          'email': email
+                        });
                       } else {
                         AppSnackbar.msg(context, 'Bunday Email mavjud emas!');
                         return;

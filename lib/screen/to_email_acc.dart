@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/theme/strings.dart';
 import 'package:shoppin/screen/new_password_screen.dart';
@@ -6,8 +7,8 @@ import '../core/theme/themes.dart';
 import '/core/theme/colors.dart';
 
 class ToEmailAcc extends StatefulWidget {
-  final String email;
-  const ToEmailAcc({required this.email, super.key});
+  final String? email;
+  const ToEmailAcc({this.email, super.key});
 
   @override
   State<ToEmailAcc> createState() => _ToEmailAccState();
@@ -16,6 +17,13 @@ class ToEmailAcc extends StatefulWidget {
 class _ToEmailAccState extends State<ToEmailAcc> {
   @override
   Widget build(BuildContext context) {
+    final extra = GoRouter.of(context).state.extra;
+    if (extra is! Map<String, dynamic>) {
+      return Scaffold(
+        body: Center(child: Text("Invalid data")),
+      );
+    }
+    final email = extra['email'];
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
@@ -187,7 +195,7 @@ class _ToEmailAccState extends State<ToEmailAcc> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => NewPasswordScreen(
-                          email: widget.email,
+                          email: email ?? "",
                         ),
                       ),
                     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/screen/shipping_address.dart';
 import '../core/components/check_out_button.dart';
 import '/core/theme/strings.dart';
@@ -7,7 +8,6 @@ import '/screen/empty_cart_screen.dart';
 import '/servis/app_service.dart';
 
 import '../core/components/my_cart_widget.dart';
-import '../core/theme/colors.dart';
 
 class YourCart extends StatefulWidget {
   const YourCart({super.key});
@@ -27,13 +27,32 @@ class _YourCartState extends State<YourCart> {
 
   @override
   Widget build(BuildContext context) {
+    final extra = GoRouter.of(context).state.extra;
+    if (extra is! Map<String, dynamic>) {
+      return Scaffold(
+        body: Center(
+          child: Text("Invalid data"),
+        ),
+      );
+    }
+    final name = extra['name'];
+    final image = extra['image'];
+    final price = extra['price'];
+    final category = extra['category'];
+    final color = extra['color'];
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.onPrimary,
         leading: BackButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.goNamed('rate', extra: {
+              'name': name,
+              'image': image,
+              'price': price,
+              'category': category,
+              'color': color
+            });
           },
         ),
       ),
@@ -60,17 +79,12 @@ class _YourCartState extends State<YourCart> {
                         leftButText: "Cancel",
                         rightButText: "Empty Cart",
                         pressLeft: () {
-                          Navigator.pop(context);
+                          context.pop();
                         },
                         pressRight: () {
                           setState(() {
                             cartService.clearCart();
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => EmptyCart(),
-                              ),
-                            );
+                            context.goNamed('empty');
                           });
                         });
                   },
@@ -111,7 +125,7 @@ class _YourCartState extends State<YourCart> {
                                 leftButText: "Cancel",
                                 rightButText: "Delete",
                                 pressLeft: (){
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 pressRight: (){
                                   setState(() {
@@ -142,10 +156,13 @@ class _YourCartState extends State<YourCart> {
                   cartService: cartService,
                   text: "Check Out",
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context)=>ShippingAddress(),
-                  ),
-                  );
+                    context.goNamed('shipping', extra: {
+                      'name': name,
+                      'image': image,
+                      'price': price,
+                      'category': category,
+                      'color': color,
+                    });
                 },
               ),
             ),

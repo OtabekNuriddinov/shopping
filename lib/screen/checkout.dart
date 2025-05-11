@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/components/check_out_button.dart';
 import 'package:shoppin/core/theme/colors.dart';
 import 'package:shoppin/core/theme/themes.dart';
@@ -6,27 +7,27 @@ import 'package:shoppin/screen/finallly_page.dart';
 import 'package:shoppin/servis/app_service.dart';
 
 class Checkout extends StatefulWidget {
-  final String country;
-  final String city;
-  final String postcode;
-  final String street;
-  final String name;
-  final String cardNum;
-  final String date;
-  final String cvc;
-  final String image;
+  final String? country;
+  final String? city;
+  final String? postcode;
+  final String? street;
+  final String? name;
+  final String? cardNum;
+  final String? date;
+  final String? cvc;
+  final String? image;
 
   const Checkout(
       {super.key,
-      required this.country,
-      required this.city,
-      required this.postcode,
-      required this.street,
-      required this.name,
-      required this.cardNum,
-      required this.date,
-      required this.cvc,
-      required this.image});
+      this.country,
+      this.city,
+      this.postcode,
+      this.street,
+        this.name,
+      this.cardNum,
+      this.date,
+      this.cvc,
+      this.image});
 
   @override
   State<Checkout> createState() => _CheckoutState();
@@ -43,11 +44,36 @@ class _CheckoutState extends State<Checkout> {
 
   @override
   Widget build(BuildContext context) {
+    final extra = GoRouter.of(context).state.extra;
+    if (extra is! Map<String, dynamic>) {
+      return Scaffold(
+        body: Center(child: Text("Invalid data")),
+      );
+    }
+    final country = extra['country'];
+    final city = extra['city'];
+    final postcode = extra['postcode'];
+    final street = extra['street'];
+    final name = extra['name'];
+    final cardNum = extra['cardNum'];
+    final date = extra['date'];
+    final image = extra['image'];
+    final cvc = extra['cvc'];
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.goNamed('payment', extra: {
+              'country': country,
+              'city': city,
+              'postcode': postcode,
+              'street': street,
+              'name': name,
+              'cardNum': cardNum,
+              'date': date,
+              'image': image,
+              'cvc': cvc
+            });
           },
         ),
       ),
@@ -87,7 +113,7 @@ class _CheckoutState extends State<Checkout> {
           SliverToBoxAdapter(child: SizedBox(height: 5)),
           SliverToBoxAdapter(
             child: Text(
-                "${widget.city}, str. ${widget.street}\n${widget.postcode} ${widget.city}, ${widget.country}"),
+                "$city, str. $street\n$postcode $city, $country"),
           ),
           SliverToBoxAdapter(child: SizedBox(height: 10)),
           SliverToBoxAdapter(child: Divider()),
@@ -105,7 +131,8 @@ class _CheckoutState extends State<Checkout> {
                     child: Text(
                       "Change",
                       style: TextStyle(color: Colors.blue),
-                    ))
+                    ),
+                )
               ],
             ),
           ),
@@ -126,7 +153,7 @@ class _CheckoutState extends State<Checkout> {
                       clipBehavior: Clip.antiAlias,
                       child: Image.asset(
                         fit: BoxFit.cover,
-                        widget.image,
+                        '$image',
                       ),
                     ),
                   ),
@@ -137,11 +164,11 @@ class _CheckoutState extends State<Checkout> {
           SliverToBoxAdapter(child: SizedBox(height: 10)),
           SliverToBoxAdapter(
               child:
-                  Text(widget.cardNum, style: TextStyle(color: Themes.grey))),
+                  Text(cardNum ?? "", style: TextStyle(color: Themes.grey))),
           SliverToBoxAdapter(
-              child: Text(widget.name, style: TextStyle(color: Themes.grey))),
+              child: Text(name ?? "", style: TextStyle(color: Themes.grey))),
           SliverToBoxAdapter(
-              child: Text(widget.date, style: TextStyle(color: Themes.grey))),
+              child: Text(date ?? "", style: TextStyle(color: Themes.grey))),
           SliverToBoxAdapter(child: SizedBox(height: 20)),
           SliverToBoxAdapter(child: Divider()),
           SliverToBoxAdapter(child: SizedBox(height: 20)),
@@ -186,12 +213,7 @@ class _CheckoutState extends State<Checkout> {
               cartService: cartService,
               text: "Place Order",
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => FinallyPage(),
-                  ),
-                );
+                context.goNamed('finally');
               },
             ),
           )

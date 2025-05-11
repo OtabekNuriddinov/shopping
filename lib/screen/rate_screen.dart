@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/servis/app_service.dart';
 import '../core/theme/themes.dart';
 import '../models/cart_model.dart';
@@ -8,22 +9,23 @@ import '/screen/reviews_screen.dart';
 import '/screen/your_cart_screen.dart';
 
 class RateScreen extends StatefulWidget {
-  final String name;
-  final String image;
-  final double price;
-  final String category;
-  final Color color;
+  final String? name;
+  final String? image;
+  final double? price;
+  final String? category;
+  final Color? color;
   const RateScreen(
-      {required this.name,
-      required this.image,
-      required this.price,
-      required this.category,
-      required this.color,
+      {this.name,
+      this.image,
+      this.price,
+      this.category,
+      this.color,
       super.key});
 
   @override
   State<RateScreen> createState() => _RateScreenState();
 }
+
 
 class _RateScreenState extends State<RateScreen> {
   late double width;
@@ -54,7 +56,7 @@ class _RateScreenState extends State<RateScreen> {
         backgroundColor: Theme.of(context).colorScheme.onPrimary,
         leading: BackButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
       ),
@@ -65,7 +67,7 @@ class _RateScreenState extends State<RateScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                widget.name,
+                widget.name ?? "",
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.onSecondary,
                   fontSize: 40,
@@ -81,7 +83,7 @@ class _RateScreenState extends State<RateScreen> {
                     color: widget.color,
                     image: DecorationImage(
                       fit: BoxFit.contain,
-                      image: AssetImage(widget.image),
+                      image: AssetImage(widget.image ?? ""),
                     )),
               ),
               Positioned(
@@ -108,7 +110,7 @@ class _RateScreenState extends State<RateScreen> {
             Align(
               alignment: Alignment(0, 0),
               child: Text(
-                widget.category,
+                widget.category ?? "",
                 style: TextStyle(color: Themes.grey, fontSize: 18),
               ),
             ),
@@ -130,10 +132,7 @@ class _RateScreenState extends State<RateScreen> {
                   SizedBox(width: 5),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ReviewsScreen()));
+                      context.go('/products/rate/reviews');
                     },
                     child: Text(
                       "124 reviews",
@@ -158,20 +157,21 @@ class _RateScreenState extends State<RateScreen> {
                     onTapped: () {
                       cartService.addItem(
                         CartModel(
-                            image: widget.image,
-                            color: widget.color,
-                            name: widget.name,
+                            image: widget.image ?? "",
+                            color: widget.color ?? Colors.white,
+                            name: widget.name ?? "",
                             quantity: 1,
-                            price: widget.price,
+                            price: widget.price ?? 0,
                         ),
                       );
                       print(cartService.cartItems);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>YourCart(),
-                        ),
-                      );
+                      context.go('/products/rate/your-cart', extra: {
+                        'name': widget.name,
+                        'image': widget.image,
+                        'price': widget.price,
+                        'category': widget.category,
+                        'color': widget.color
+                      });
                     }),
               ),
             )

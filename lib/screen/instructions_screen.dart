@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/theme/colors.dart';
 import 'package:shoppin/core/theme/icons.dart';
 import 'package:shoppin/core/theme/strings.dart';
@@ -7,8 +8,8 @@ import 'package:shoppin/screen/to_email_acc.dart';
 import '../core/components/my_elevated_button.dart';
 
 class InstructionsScreen extends StatefulWidget {
-  final String email;
-  const InstructionsScreen({required this.email, super.key});
+  final String? email;
+  const InstructionsScreen({this.email, super.key});
 
   @override
   State<InstructionsScreen> createState() => _InstructionsScreenState();
@@ -27,6 +28,13 @@ class _InstructionsScreenState extends State<InstructionsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final extra = GoRouter.of(context).state.extra;
+    if (extra is! Map<String, dynamic>) {
+      return Scaffold(
+        body: Center(child: Text("Invalid data")),
+      );
+    }
+    final email = extra['email'];
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       appBar: AppBar(
@@ -81,13 +89,10 @@ class _InstructionsScreenState extends State<InstructionsScreen> {
                   child: MyElevatedButton(
                     text: AppStrings.goTo,
                     onTapped: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ToEmailAcc(
-                            email: widget.email,
-                          ),
-                        ),
+                      context.goNamed('toEmail',
+                        extra: {
+                         'email': email
+                        }
                       );
                     },
                   ),

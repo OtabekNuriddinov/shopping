@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shoppin/core/components/my_elevated_button.dart';
 import 'package:shoppin/core/theme/colors.dart';
 import 'package:shoppin/core/theme/strings.dart';
@@ -53,12 +54,7 @@ class _FinallyPageState extends State<FinallyPage> {
               child: MyElevatedButton(
                   text: AppStrings.continueShop,
                   onTapped: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProductsScreen(),
-                      ),
-                    );
+                    context.go('/products');
                   }),
             )
           ],
